@@ -29,9 +29,9 @@ with open(filename) as f:
         num = int(line.strip())
         print("{:d}m".format(num), end='')
         if num % 2 == 0:
-            print(" * 2")
+            print("2* {}".format(num // 2)))
             continue
         factors = find_prime_factors(num)
         for factor in factors:
-            print(" * {}".format(factor), end='')
+            print("*".format(factor), end='')
         print()
