@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import sys
 
 def find_prime_factors(num):
@@ -23,8 +23,8 @@ if __name__ == "__main__":
         sys.exit(1)
 
 
-filename = sys.arg[1]
-with open(argv[i]) as f:
+filename = sys.argv[1]
+with open(filename) as f:
     for line in f:
         num = int(line.strip())
         print("{:d}m".format(num), end='')
