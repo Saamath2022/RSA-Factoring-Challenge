@@ -1,37 +1,19 @@
 #!/usr/bin/python3
-import sys
+from sys import argv
 
-def find_prime_factors(num):
-    factors = []
-    while num % 2 == 0:
-        factors.append(2)
-        num //= 2
-    divisor = 3
-    while divisor * divisor <= num:
-        if num % divisor == 0:
-            factors.append(divisor)
-            num //= divisor
-        else:
-            divisor += 2
-    if num != 1:
-        factors.append(num)
-    return factors
-
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python script.py <filename>")
-        sys.exit(1)
-
-
-filename = sys.argv[1]
-with open(filename) as f:
+with open(argv[1]) as f:
     for line in f:
-        num = int(line.strip())
+        num = int(line)
         print("{:d}m".format(num), end='')
         if num % 2 == 0:
-            print("2* {}".format(num // 2)))
+            print("{} * 2".format(num//2))
             continue
-        factors = find_prime_factors(num)
-        for factor in factors:
-            print("*".format(factor), end='')
-        print()
+        for i in range(3, num, 2):
+            if num % i == 0:
+                factor = num // i
+                for j in range(3, factor, 2):
+                    if factor % j == 0 or j == 0:
+                        break
+                print("{} * {}".format(factor, i))
+                break
+
